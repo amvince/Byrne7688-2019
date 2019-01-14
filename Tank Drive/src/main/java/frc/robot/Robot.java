@@ -8,7 +8,7 @@ import frc.systems.Drivetrain;
 public class Robot extends TimedRobot {
   public static OI oi;
   public static Drivetrain drivetrain;
-
+  public static double m_speed = -.75;
   @Override
   public void robotInit() {
     drivetrain = new Drivetrain();
@@ -20,6 +20,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    drivetrain.tankDrive(oi.joystick.getRawAxis(1), oi.joystick.getRawAxis(5));
+    drivetrain.tankDrive(oi.joystick.getRawAxis(1)*m_speed, oi.joystick.getRawAxis(5)*m_speed);
   }
 }
