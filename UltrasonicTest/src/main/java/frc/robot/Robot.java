@@ -49,6 +49,7 @@ public class Robot extends TimedRobot {
     double currentSpeed = (kHoldDistance - currentDistance) * kP;
 
     // drive robot
-    m_robotDrive.arcadeDrive(currentSpeed, 0);
+    // m_robotDrive.arcadeDrive(currentSpeed, 0);
+    System.out.println("Distance: " + currentDistance);
   }
 }
