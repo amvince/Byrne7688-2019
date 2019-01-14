@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Robot extends TimedRobot {
   // distance in inches the robot wants to stay from an object
-  private static final double kHoldDistance = 12.0;
+  private static final double kHoldDistance = 18.0;
 
   // factor to convert sensor values to a distance in inches
   private static final double kValueToInches = 0.125;
