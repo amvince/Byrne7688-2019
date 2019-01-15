@@ -13,7 +13,9 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     drivetrain = new Drivetrain();
     oi = new OI();
+    
     CameraServer.getInstance().startAutomaticCapture();
+
 
 
   }
