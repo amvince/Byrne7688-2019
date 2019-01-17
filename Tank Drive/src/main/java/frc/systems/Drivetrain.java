@@ -9,9 +9,9 @@ import frc.robot.RobotMap;
 
 public class Drivetrain extends Subsystem {
     
-    WPI_VictorSPX left_f, left_r, right_f, right_r;
-    DifferentialDrive m_drive;
-    SpeedControllerGroup m_left, m_right;
+    private static WPI_VictorSPX left_f, left_r, right_f, right_r;
+    private static DifferentialDrive m_drive;
+    private static SpeedControllerGroup m_left, m_right;
 
     public Drivetrain() {
         left_f = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_FRONT);

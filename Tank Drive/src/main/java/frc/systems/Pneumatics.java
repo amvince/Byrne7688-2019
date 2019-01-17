@@ -6,23 +6,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class Pneumatics extends Subsystem {
-    static Compressor c;
-    static DoubleSolenoid ds;
+    private final static Compressor c = new Compressor(RobotMap.PN_COMPRESSOR);
+    private DoubleSolenoid ds=null;
 
     public Pneumatics() {
-        c = new Compressor(RobotMap.PN_COMPRESSOR);
         ds = new DoubleSolenoid(RobotMap.PN_SOLENOID_AF, RobotMap.PN_SOLENOID_AR);
     }
 
-    public static void extend() {
+    public Pneumatics(int solExtend, int solRetract) {
+        ds = new DoubleSolenoid(solExtend, solRetract);
+    }
+
+    public void extend() {
         ds.set(DoubleSolenoid.Value.kForward);
     }
 
-    public static void retract() {
+    public void retract() {
         ds.set(DoubleSolenoid.Value.kReverse);
     }
 
-    public static void off() {
+    public void off() {
         ds.set(DoubleSolenoid.Value.kOff);
     }
 
