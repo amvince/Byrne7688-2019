@@ -20,17 +20,17 @@ public class Arm extends Subsystem {
         hatchRelease = new Pneumatics();
     }
 
-    public void release() {
-        // TODO: create cycle to fire hatchRelease piston 
-        // for placement of hatch disk.
-        // Should this "command" be placed inside a commands subsection?
+    public void extend() {
         hatchRelease.extend();
-        // wait half a second
-        hatchRelease.retract();
-        // wait half a second
-        hatchRelease.off();
     }
 
+    public void retract() {
+        hatchRelease.retract();
+    }
+
+    public void off() {
+        hatchRelease.off();
+    }
     public void rotateTo(int angle) {
         /* TODO: create function to rotate arm to a specific position
             We may need to implement a return value from our motors
