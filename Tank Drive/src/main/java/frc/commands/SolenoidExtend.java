@@ -9,6 +9,18 @@ public class SolenoidExtend extends Command {
         requires(Robot.armAct);
     }
 
+    public void initialize() {
+        Robot.armAct.extend();
+    }
+
+    public void end() {
+        Robot.armAct.off();
+    }
+
+    public void interrupted() {
+        end();
+    }
+    
     @Override
     protected boolean isFinished() {
         return false;
