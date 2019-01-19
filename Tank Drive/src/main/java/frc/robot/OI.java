@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.commands.Release;
 import frc.commands.SolenoidExtend;
 import frc.commands.SolenoidOff;
 import frc.commands.SolenoidRetract;
@@ -21,5 +22,6 @@ public class OI {
         buttonX.whenReleased(new SolenoidOff());
         buttonY.whenPressed(new SolenoidRetract());
         buttonY.whenReleased(new SolenoidOff());
+        buttonA.whenPressed(new Release());
     }
 }
