@@ -6,15 +6,11 @@ import frc.robot.Robot;
 public class SolenoidRetract extends Command {
 
     public SolenoidRetract() {
-        requires(Robot.arm);
+        requires(Robot.armAct);
     }
 
     protected void initialize() {
-        Robot.arm.retract();
-    }
-
-    protected void execute() {
-
+        Robot.armAct.retract();
     }
 
     @Override
@@ -23,7 +19,7 @@ public class SolenoidRetract extends Command {
     }
 
     protected void end() {
-        Robot.arm.off();
+        Robot.armAct.off();
     }
 
     protected void interrupted() {

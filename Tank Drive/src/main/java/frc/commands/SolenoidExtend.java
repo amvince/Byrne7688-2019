@@ -6,28 +6,12 @@ import frc.robot.Robot;
 public class SolenoidExtend extends Command {
 
     public SolenoidExtend() {
-        requires(Robot.arm);
-    }
-
-    protected void initialize() {
-        Robot.arm.extend();
-    }
-
-    protected void execute() {
-
+        requires(Robot.armAct);
     }
 
     @Override
     protected boolean isFinished() {
-        return true;
-    }
-
-    protected void end() {
-        Robot.arm.off();
-    }
-
-    protected void interrupted() {
-        end();
+        return false;
     }
 
 }

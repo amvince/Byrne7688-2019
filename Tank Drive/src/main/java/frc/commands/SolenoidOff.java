@@ -6,22 +6,16 @@ import frc.robot.Robot;
 public class SolenoidOff extends Command {
 
     public SolenoidOff() {
-        requires(Robot.arm);
+        requires(Robot.armAct);
     }
 
     protected void initialize() {
-        Robot.arm.off();
+        Robot.armAct.off();
     }
 
     @Override
     protected boolean isFinished() {
         return true;
-    }
-
-    protected void end() {
-    }
-
-    protected void interrupted() {
     }
 
 }

@@ -2,28 +2,39 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.systems.Arm;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.systems.Drivetrain;
+import frc.systems.Pneumatics;
 
 
 public class Robot extends TimedRobot {
   public static OI oi;
   public static Drivetrain drivetrain;
   public static double m_speed = -1;
-  public static Arm arm = null;
+  public static Pneumatics armAct;
+
+  Command autonomousCommand;
 
   @Override
   public void robotInit() {
     drivetrain = new Drivetrain();
     oi = new OI();
-    arm = new Arm();
-    
+    armAct = new Pneumatics();
+
     CameraServer.getInstance().startAutomaticCapture();
 
   }
 
   @Override
   public void teleopPeriodic() {
-    drivetrain.tankDrive(oi.joystick.getRawAxis(1)*m_speed, oi.joystick.getRawAxis(5)*m_speed);
+    // Scheduler.getInstance().run();
+     drivetrain.tankDrive(oi.joystick.getRawAxis(1)*m_speed, oi.joystick.getRawAxis(5)*m_speed);
+  }
+
+  @Override
+  public void teleopInit() {
+     if (autonomousCommand != null)
+      autonomousCommand.cancel();
   }
 }
