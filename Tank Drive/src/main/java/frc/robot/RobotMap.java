@@ -21,4 +21,9 @@ public class RobotMap {
 	public static final int OI_BUTTON_Y = 4;
 	public static final int OI_BUTTON_A = 1;
 	public static final int OI_BUTTON_B = 2;
+    
+    // Arm Map Constants
+    public static final int ARM_CONTROLLER = 0;
+    // As the Arm Actuator will be the only Pneumatic, it is
+    // by default defined as the Pneumatic solenoid.
 }
