@@ -1,7 +1,7 @@
 package frc.robot;
 
 public class RobotMap {
-    // Drivetrain Constants
+    // Drivetrain Constants for CAN Victors
     public static final int DRIVETRAIN_LEFT_FRONT = 1;
     public static final int DRIVETRAIN_LEFT_REAR = 2;
     public static final int DRIVETRAIN_RIGHT_FRONT = 3;

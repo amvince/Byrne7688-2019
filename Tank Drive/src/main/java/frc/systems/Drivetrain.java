@@ -25,7 +25,6 @@ public class Drivetrain extends Subsystem {
         m_left = new SpeedControllerGroup(left_f, left_r);
         m_right = new SpeedControllerGroup(right_f, right_r);
         m_drive = new DifferentialDrive(m_left, m_right);
-
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
