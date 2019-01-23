@@ -24,8 +24,10 @@ public class ArmSolenoid extends Command {
   protected void initialize() {
     if (dir>0) {
       Robot.m_arm.extend();
-    } else {
+    } else if(dir<0) {
       Robot.m_arm.retract();
+    } else {
+      Robot.m_arm.off();
     }
   }
 
