@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 // import frc.robot.commands.ArmDown;
@@ -22,6 +23,7 @@ public class Arm extends Subsystem {
   // here. Call these from Commands.
   WPI_TalonSRX m_talon = new WPI_TalonSRX(5);
   DoubleSolenoid ds = new DoubleSolenoid(RobotMap.PN_SOLENOID_AF, RobotMap.PN_SOLENOID_AR);
+  Compressor c = new Compressor(RobotMap.PN_COMPRESSOR);
 
   public void forward(double m_speed) {
     m_talon.set(m_speed);

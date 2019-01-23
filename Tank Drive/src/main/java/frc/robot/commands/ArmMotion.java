@@ -10,7 +10,7 @@ public class ArmMotion extends Command {
   public ArmMotion(double speed) {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_arm);
-    m_speed = speed;
+    this.m_speed = speed;
   }
 
   // Called just before this Command runs the first time

@@ -25,8 +25,8 @@ public class RobotMap {
 
   // Pneumatics Constants
   public static final int PN_COMPRESSOR = 0;
-  public static final int PN_SOLENOID_AF = 1;
-  public static final int PN_SOLENOID_AR = 2;
+  public static final int PN_SOLENOID_AF = 0;
+  public static final int PN_SOLENOID_AR = 1;
 
   // Joystick Constants
 public static final int OI_DRIVER_CONTROLLER = 0;
