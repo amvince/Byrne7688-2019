@@ -1,4 +1,4 @@
-package frc.systems;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.TankDrive;
 
 public class Drivetrain extends Subsystem {
     
@@ -36,6 +37,6 @@ public class Drivetrain extends Subsystem {
     }
 
     public void initDefaultCommand() {
-       // TankDrive();
+        setDefaultCommand(new TankDrive());
     }
 }
