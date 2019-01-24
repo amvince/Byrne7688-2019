@@ -14,8 +14,8 @@ public class ArmUp extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (!Robot.m_arm.isLimit()) { 
-      Robot.m_arm.forward(1);
+    if (Robot.m_arm.isLimit()) { 
+      Robot.m_arm.forward(-1);
     }
   }
 
@@ -27,7 +27,7 @@ public class ArmUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_arm.isLimit();
+    return !Robot.m_arm.isLimit();
   }
 
   // Called once after isFinished returns true

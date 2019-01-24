@@ -16,8 +16,8 @@ public class OI {
   Button buttonB = new JoystickButton(joystick, RobotMap.OI_BUTTON_B);
   
   public OI() {
-    buttonX.whileHeld(new ArmUp());
-    buttonY.whileHeld(new ArmDown());
+    buttonX.whileHeld(new ArmDown());
+    buttonY.whileHeld(new ArmUp());
     buttonA.whileHeld(new ArmSolenoid(1));
     buttonB.whileHeld(new ArmSolenoid(-1));
   }
