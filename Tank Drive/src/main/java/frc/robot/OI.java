@@ -3,8 +3,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.ArmMotion;
+import frc.robot.commands.ArmDown;
 import frc.robot.commands.ArmSolenoid;
+import frc.robot.commands.ArmUp;
 
 public class OI {
   
@@ -15,8 +16,8 @@ public class OI {
   Button buttonB = new JoystickButton(joystick, RobotMap.OI_BUTTON_B);
   
   public OI() {
-    buttonX.whileHeld(new ArmMotion(1.0));
-    buttonY.whileHeld(new ArmMotion(-1.0));
+    buttonX.whileHeld(new ArmUp());
+    buttonY.whileHeld(new ArmDown());
     buttonA.whileHeld(new ArmSolenoid(1));
     buttonB.whileHeld(new ArmSolenoid(-1));
   }

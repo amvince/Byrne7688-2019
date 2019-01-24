@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ArmMotion;
+import frc.robot.commands.ArmUp;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 
@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_oi = new OI();
 
-    m_chooser.setDefaultOption("Default Auto", new ArmMotion(0));
+    m_chooser.setDefaultOption("Default Auto", new ArmUp());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }

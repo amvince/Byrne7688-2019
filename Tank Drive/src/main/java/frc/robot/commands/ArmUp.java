@@ -4,19 +4,19 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 
-public class ArmMotion extends Command {
-  private double m_speed;
+public class ArmUp extends Command {
 
-  public ArmMotion(double speed) {
+  public ArmUp() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_arm);
-    this.m_speed = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_arm.forward(m_speed);
+    if (!Robot.m_arm.isLimit()) { 
+      Robot.m_arm.forward(1);
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -27,18 +27,18 @@ public class ArmMotion extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.m_arm.isLimit();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_arm.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.m_arm.stop();
-  }
+    end();  }
 }
