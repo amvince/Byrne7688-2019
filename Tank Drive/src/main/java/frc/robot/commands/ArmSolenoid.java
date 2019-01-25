@@ -22,13 +22,15 @@ public class ArmSolenoid extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (dir>0) {
-      Robot.m_arm.extend();
-    } else if(dir<0) {
-      Robot.m_arm.retract();
-    } else {
-      Robot.m_arm.off();
+    switch (dir) {
+      case 1: Robot.m_arm.extend();
+              break;
+      case -1:  Robot.m_arm.retract();
+              break;
+      default: Robot.m_arm.off();
+              break;
     }
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
