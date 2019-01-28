@@ -17,19 +17,21 @@ public class TimedReverse extends Command {
 
   public TimedReverse() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_arm);
+    requires(Robot.drivetrain);
   }
 
   public TimedReverse(double time) {
-    requires(Robot.m_arm);
-    d_time = time;
+    requires(Robot.drivetrain);
+    this.d_time = time;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
     m_time = new Timer();
-    Robot.m_arm.forward(-0.5);
+    m_time.reset();
+    m_time.start();
+    Robot.drivetrain.tankDrive(-0.5, -0.5);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -40,13 +42,14 @@ public class TimedReverse extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    // System.out.println("Reversing: " + m_time.get());
     return m_time.hasPeriodPassed(d_time);
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_arm.stop();
+    Robot.drivetrain.stop();
   }
 
   // Called when another command which requires one or more of the same
