@@ -7,25 +7,30 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class Release extends Command {
-  public Release() {
-    requires(Robot.m_arm);
+public class LiftSolenoid extends Command {
+  private int dir;
+
+  public LiftSolenoid(int dir) {
+    requires(Robot.m_lifter);
+    this.dir = dir;
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_arm.extend();
-    Timer.delay(RobotMap.DELAY_TIME);
-    Robot.m_arm.retract();
-    Timer.delay(RobotMap.DELAY_TIME);
-    Robot.m_arm.off();
-
+    switch (dir) {
+      case 1: Robot.m_lifter.extend();
+              break;
+      case -1:  Robot.m_lifter.retract();
+              break;
+      default: Robot.m_lifter.off();
+              break;
+    }
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -36,7 +41,7 @@ public class Release extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
@@ -48,5 +53,6 @@ public class Release extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.m_arm.off();
   }
 }
