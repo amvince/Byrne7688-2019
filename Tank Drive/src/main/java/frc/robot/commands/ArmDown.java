@@ -13,7 +13,7 @@ public class ArmDown extends Command {
   @Override
   protected void initialize() {
      {
-    Robot.m_arm.forward(1);
+    Robot.m_arm.forward();
     }
   }
 

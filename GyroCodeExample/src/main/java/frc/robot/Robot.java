@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -29,6 +30,10 @@ public class Robot extends TimedRobot {
       new WPI_VictorSPX(kRightMotorPort)); 
   private final Joystick m_joystick = new Joystick(kJoystickPort);
   
+  double lastPosition;
+  double P=0.05, I=0.2, D = 0; // Try P=.5K, I=.5K/Time of Oscillation
+  double integral, setPoint, previous_error = 0;
+  double rcw;
 
   @Override
   public void robotInit() {
@@ -46,22 +51,31 @@ public class Robot extends TimedRobot {
    @Override
   public void teleopPeriodic() {
 
-    turnToFace(90);
+    turnToFace(0);
     
   }
 
-  private void turnToFace(double targetAngle) {
+  private void turnToFace(int targetAngle) {
+    this.setPoint = targetAngle;
     double gyroAngle = m_gyro.getAngle()%360;
-    double speedFactor = 0;
-    double turningValue = (targetAngle - gyroAngle);
+    // double speedFactor = 0;
+    double error = (targetAngle - gyroAngle);
 
-    System.out.println("Pointing: "+ gyroAngle + " Correction: "+turningValue);
+    this.integral += (error*.02);
+    double derivative = (error - this.previous_error) / 0.02;
+    this.rcw = P*error + I * this.integral + D*derivative;
 
-    if (turningValue > 1) { speedFactor = Math.min(1.0, turningValue/5);
-    } else if (turningValue < -1) { speedFactor = -Math.min(1.0, -turningValue/5); }
+    System.out.println("Pointing: "+ gyroAngle + " Correction: "+error);
+    System.out.println("RCW: "+this.rcw);
+    /* 
+    if (error > 1) { speedFactor = Math.min(1.0, error/5);
+    } else if (error < -1) { speedFactor = -Math.min(1.0, -error/5); }
     else {speedFactor = 0.0; }
-
-    m_myRobot.tankDrive(0.5 * speedFactor, -0.5 * speedFactor);
+    */ 
+    Timer.delay(0.004);
+    // this.previous_error = gyroAngle;
+    m_myRobot.arcadeDrive(0,this.rcw);
+    // m_myRobot.tankDrive(0.5 * speedFactor, -0.5 * speedFactor);
   }
   
 }

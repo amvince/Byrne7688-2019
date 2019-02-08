@@ -13,7 +13,7 @@ public class ArmUp extends Command {
   @Override
   protected void initialize() {
     if (Robot.m_arm.isLimit()) { 
-      Robot.m_arm.forward(-1);
+      Robot.m_arm.reverse();;
     }
   }
 

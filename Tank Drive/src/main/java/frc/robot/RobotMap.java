@@ -25,8 +25,6 @@ public class RobotMap {
 
   // Pneumatics Constants
   public static final int PN_COMPRESSOR = 0;
-  public static final int PN_SOLENOID_AF = 0;
-  public static final int PN_SOLENOID_AR = 1;
 
   // Joystick Constants
 public static final int OI_DRIVER_CONTROLLER = 0;
@@ -40,6 +38,12 @@ public static final int OI_BUTTON_B = 2;
   
   // Arm Map Constants
   public static final int ARM_CONTROLLER = 5;
-  // As the Arm Actuator will be the only Pneumatic, it is
-  // by default defined as the Pneumatic solenoid.
+  public static final int ARM_CONTROLLERB = 6;
+  public static final double ARM_SPEED = 0.01;
+  public static final int PN_SOLENOID_AF = 0; // Arm Solenoid Forward
+  public static final int PN_SOLENOID_AR = 1; // Arm Solenoid Reverse
+
+  // Rear Lifter Constants
+  public static final int PN_SOLENOID_LD = 2; // Lift Solenoid Down
+  public static final int PN_SOLENOID_LU = 3; // Lift Solenoid Up
 }

@@ -17,21 +17,28 @@ import frc.robot.RobotMap;
 
 
 public class Arm extends Subsystem {
- 
+
+  private double maxSpeed = RobotMap.ARM_SPEED;
+
   WPI_TalonSRX m_talon = new WPI_TalonSRX(RobotMap.ARM_CONTROLLER);
+  WPI_TalonSRX m_talonb = new WPI_TalonSRX(RobotMap.ARM_CONTROLLERB);
+  
   DoubleSolenoid ds = new DoubleSolenoid(RobotMap.PN_SOLENOID_AF, RobotMap.PN_SOLENOID_AR);
   Compressor c = new Compressor(RobotMap.PN_COMPRESSOR);
   DigitalInput reverseLimit = new DigitalInput(0);
 
   public void forward() {
-    m_talon.set(1);
+    m_talon.set(maxSpeed);
+    m_talonb.set(maxSpeed);
+
   }
   public void forward(double m_speed) {
     m_talon.set(m_speed);
   }
   public void reverse() {
     if (!isLimit()) {
-      m_talon.set(-1);
+      m_talon.set(-maxSpeed);
+      m_talon.set(-maxSpeed);
     }
   }
 
@@ -40,6 +47,7 @@ public class Arm extends Subsystem {
   }
   public void stop() {
     m_talon.set(0.0);
+    m_talonb.set(0.0);
   }
 
   public void extend() {
