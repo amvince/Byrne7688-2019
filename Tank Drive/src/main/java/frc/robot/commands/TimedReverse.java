@@ -7,30 +7,31 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ArmSolenoid extends Command {
-  private int dir;
+public class TimedReverse extends Command {
+  private double d_time = 1.0;
+  private Timer m_time;
 
-  public ArmSolenoid(int dir) {
-    requires(Robot.m_arm);
-    this.dir = dir;
+  public TimedReverse() {
+    // Use requires() here to declare subsystem dependencies
+    requires(Robot.drivetrain);
+  }
 
+  public TimedReverse(double time) {
+    requires(Robot.drivetrain);
+    this.d_time = time;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    switch (dir) {
-      case 1: Robot.m_arm.extend();
-              break;
-      case -1:  Robot.m_arm.retract();
-              break;
-      default: Robot.m_arm.off();
-              break;
-    }
-    
+    m_time = new Timer();
+    m_time.reset();
+    m_time.start();
+    Robot.drivetrain.tankDrive(-0.5, -0.5);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,18 +42,20 @@ public class ArmSolenoid extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    // System.out.println("Reversing: " + m_time.get());
+    return m_time.hasPeriodPassed(d_time);
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.drivetrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.m_arm.off();
+    end();
   }
 }

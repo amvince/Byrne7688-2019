@@ -10,11 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ArmSolenoid extends Command {
+public class LiftSolenoid extends Command {
   private int dir;
 
-  public ArmSolenoid(int dir) {
-    requires(Robot.m_arm);
+  public LiftSolenoid(int dir) {
+    requires(Robot.m_lifter);
     this.dir = dir;
 
   }
@@ -23,11 +23,11 @@ public class ArmSolenoid extends Command {
   @Override
   protected void initialize() {
     switch (dir) {
-      case 1: Robot.m_arm.extend();
+      case 1: Robot.m_lifter.extend();
               break;
-      case -1:  Robot.m_arm.retract();
+      case -1:  Robot.m_lifter.retract();
               break;
-      default: Robot.m_arm.off();
+      default: Robot.m_lifter.off();
               break;
     }
     
