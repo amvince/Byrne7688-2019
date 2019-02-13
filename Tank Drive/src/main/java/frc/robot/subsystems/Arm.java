@@ -29,6 +29,7 @@ public class Arm extends Subsystem {
 
   public void forward() {
     m_talon.set(maxSpeed);
+    System.out.println("Running Forward at "+maxSpeed);
     m_talonb.set(maxSpeed);
 
   }
@@ -36,10 +37,11 @@ public class Arm extends Subsystem {
     m_talon.set(m_speed);
   }
   public void reverse() {
-    if (!isLimit()) {
+    // if (!isLimit()) {
+      System.out.println("Running Backward at "+maxSpeed);
       m_talon.set(-maxSpeed);
-      m_talon.set(-maxSpeed);
-    }
+      m_talonb.set(-maxSpeed);
+    // }
   }
 
   public boolean isLimit() {

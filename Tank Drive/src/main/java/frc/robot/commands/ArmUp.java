@@ -12,9 +12,9 @@ public class ArmUp extends Command {
 
   @Override
   protected void initialize() {
-    if (Robot.m_arm.isLimit()) { 
+    // if (Robot.m_arm.isLimit()) { 
       Robot.m_arm.reverse();;
-    }
+   // }
   }
 
   @Override

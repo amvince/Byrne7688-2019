@@ -39,7 +39,7 @@ public static final int OI_BUTTON_B = 2;
   // Arm Map Constants
   public static final int ARM_CONTROLLER = 5;
   public static final int ARM_CONTROLLERB = 6;
-  public static final double ARM_SPEED = 0.01;
+  public static final double ARM_SPEED = 0.6;
   public static final int PN_SOLENOID_AF = 0; // Arm Solenoid Forward
   public static final int PN_SOLENOID_AR = 1; // Arm Solenoid Reverse
   public static final double DELAY_TIME = 0.2; // Extend/Retract default timer

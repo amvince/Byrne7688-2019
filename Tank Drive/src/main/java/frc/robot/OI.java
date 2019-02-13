@@ -22,9 +22,11 @@ public class OI {
     buttonA.whileHeld(new ArmSolenoid(1));
     buttonB.whileHeld(new ArmSolenoid(-1));
     /* TODO: Add single "release" button
+          perhaps change button A to do the extend/retract
      buttonWHATEVER.whenPressed(new Release());
+     
 
-     TOOD: Add lefter buttons
+     TOOD: Add lifter buttons
      buttonWHATEVER.whileHeld(new LiftSolenoid(1));
      buttonWHATEVER.whileHeld(new LiftSolenoid(-1));
 
