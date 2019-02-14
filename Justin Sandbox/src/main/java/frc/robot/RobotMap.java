@@ -89,4 +89,15 @@ public class RobotMap {
     public static final int GYROSCOPE_PORT = 0;
 
     //
+
+
+  //Pneumatics Constants
+    //Parts Used
+    public static final int PNEUMATICS_COMPRESSOR_PORT = 0;
+    public static final int PENUMATICS_SOLENOID_1_FORWARD_PORT = 0;
+    public static final int PENUMATICS_SOLENOID_1_REVERSE_PORT = 1;
+
+    //control
+    
+    
 }
