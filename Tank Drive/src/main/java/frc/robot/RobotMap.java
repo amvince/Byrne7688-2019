@@ -23,6 +23,7 @@ public class RobotMap {
 
   // Drivetrain Constant for speed (0 to 1)
   public static final double MOTOR_SPEED = 1;
+  public static final double TURN_SPEED = 0.8;
 
   // Pneumatics Constants
   public static final int PN_COMPRESSOR = 0;

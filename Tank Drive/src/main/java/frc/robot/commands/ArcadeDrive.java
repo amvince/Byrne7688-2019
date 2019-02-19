@@ -7,6 +7,7 @@ import frc.robot.RobotMap;
 public class ArcadeDrive extends Command {
 
     private static final double m_speed = -RobotMap.MOTOR_SPEED;
+    private static final double m_turn = RobotMap.TURN_SPEED;
 
     public ArcadeDrive() {
         requires(Robot.drivetrain);
@@ -20,7 +21,7 @@ public class ArcadeDrive extends Command {
     @Override
     protected void execute() {
         Robot.drivetrain.arcadeDrive(Robot.m_oi.joystick.getRawAxis(RobotMap.EX_Y) * m_speed,
-                -Robot.m_oi.joystick.getRawAxis(RobotMap.EX_X) * m_speed);
+                Robot.m_oi.joystick.getRawAxis(RobotMap.EX_X) * m_turn);
     }
     @Override
     protected boolean isFinished() {
