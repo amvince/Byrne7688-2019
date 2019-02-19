@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.TankDrive;
 
 public class Drivetrain extends Subsystem {
@@ -37,6 +38,8 @@ public class Drivetrain extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new TankDrive());
+        // Uncomment depending on the drive type you wish to initialize
+        // setDefaultCommand(new TankDrive());
+        setDefaultCommand(new ArcadeDrive());
     }
 }

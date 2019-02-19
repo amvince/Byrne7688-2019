@@ -19,14 +19,16 @@ public class RobotMap {
   public static final int DRIVETRAIN_LEFT_REAR = 2;
   public static final int DRIVETRAIN_RIGHT_FRONT = 3;
   public static final int DRIVETRAIN_RIGHT_REAR = 4;
+  
 
   // Drivetrain Constant for speed (0 to 1)
   public static final double MOTOR_SPEED = 1;
+  public static final double TURN_SPEED = 0.8;
 
   // Pneumatics Constants
   public static final int PN_COMPRESSOR = 0;
 
-  // Joystick Constants
+  // Joystick Constants - XBox Style
 public static final int OI_DRIVER_CONTROLLER = 0;
 public static final int OI_LEFT_STICK_Y = 5;
 public static final int OI_LEFT_STICK_X = 4;
@@ -35,6 +37,12 @@ public static final int OI_BUTTON_X = 3;
 public static final int OI_BUTTON_Y = 4;
 public static final int OI_BUTTON_A = 1;
 public static final int OI_BUTTON_B = 2;
+
+// Joystick Constants - Logitech Extreme Style
+public static final int EX_X = 0;
+public static final int EX_Y = 1;
+public static final int EX_TRIGGER = 1;
+public static final int EX_HAT_Y = 6;
   
   // Arm Map Constants
   public static final int ARM_CONTROLLER = 5;
@@ -42,7 +50,7 @@ public static final int OI_BUTTON_B = 2;
   public static final double ARM_SPEED = 0.6;
   public static final int PN_SOLENOID_AF = 0; // Arm Solenoid Forward
   public static final int PN_SOLENOID_AR = 1; // Arm Solenoid Reverse
-  public static final double DELAY_TIME = 0.2; // Extend/Retract default timer
+  public static final double DELAY_TIME = 0.5; // Extend/Retract default timer
 
   // Rear Lifter Constants
   public static final int PN_SOLENOID_LD = 2; // Lift Solenoid Down

@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class TimedReverse extends Command {
-  private double d_time = 1.0;
+  private double d_time = 0.0;
   private Timer m_time;
 
   public TimedReverse() {
