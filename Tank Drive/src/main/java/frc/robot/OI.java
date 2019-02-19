@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ArmDown;
 import frc.robot.commands.ArmSolenoid;
 import frc.robot.commands.ArmUp;
+import frc.robot.commands.Release;
 
 public class OI {
   
@@ -14,19 +15,20 @@ public class OI {
   Button buttonY = new JoystickButton(joystick, RobotMap.OI_BUTTON_Y);
   Button buttonA = new JoystickButton(joystick, RobotMap.OI_BUTTON_A);
   Button buttonB = new JoystickButton(joystick, RobotMap.OI_BUTTON_B);
+
   // might want to define trigger buttons for another function, such as the lifter
   
   public OI() {
     buttonX.whileHeld(new ArmDown());
     buttonY.whileHeld(new ArmUp());
-    buttonA.whileHeld(new ArmSolenoid(1));
-    buttonB.whileHeld(new ArmSolenoid(-1));
+    // buttonA.whileHeld(new ArmSolenoid(1));
+    // buttonB.whileHeld(new ArmSolenoid(-1));
     /* TODO: Add single "release" button
-          perhaps change button A to do the extend/retract
-     buttonWHATEVER.whenPressed(new Release());
+          perhaps change button A to do the extend/retract */
+     buttonA.whenPressed(new Release());
      
 
-     TOOD: Add lifter buttons
+     /* TOOD: Add lifter buttons
      buttonWHATEVER.whileHeld(new LiftSolenoid(1));
      buttonWHATEVER.whileHeld(new LiftSolenoid(-1));
 
