@@ -18,8 +18,8 @@ public class RunAround extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TimedDrive(1));
-    addSequential(new TimedReverse(1));
+    addSequential(new TimedDrive());
+    addSequential(new TimedReverse());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
