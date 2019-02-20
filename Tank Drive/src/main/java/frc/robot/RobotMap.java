@@ -55,4 +55,6 @@ public static final int EX_HAT_Y = 6;
   // Rear Lifter Constants
   public static final int PN_SOLENOID_LD = 2; // Lift Solenoid Down
   public static final int PN_SOLENOID_LU = 3; // Lift Solenoid Up
+
+  
 }
