@@ -32,13 +32,13 @@ public class Turn extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.m_gyro.calibrate();
+    Robot.drivetrain.m_gyro.calibrate();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double gyroAngle = Robot.m_gyro.getAngle()%360;
+    double gyroAngle = Robot.drivetrain.m_gyro.getAngle()%360;
     // double speedFactor = 0;
     this.error = (targetAngle - gyroAngle);
     this.integral += (this.error*.02);
@@ -65,7 +65,7 @@ public class Turn extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_gyro.reset();
+    Robot.drivetrain.m_gyro.reset();
   }
 
   // Called when another command which requires one or more of the same

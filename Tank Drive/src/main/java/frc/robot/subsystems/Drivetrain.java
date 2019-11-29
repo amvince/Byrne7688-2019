@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -14,6 +15,7 @@ public class Drivetrain extends Subsystem {
     private static WPI_VictorSPX left_f, left_r, right_f, right_r;
     private static DifferentialDrive m_drive;
     private static SpeedControllerGroup m_left, m_right;
+    public ADXRS450_Gyro m_gyro = new ADXRS450_Gyro();
     public double t_speed = RobotMap.MOTOR_SPEED;
     public double d_speed = 1.0;
     public Drivetrain() {
