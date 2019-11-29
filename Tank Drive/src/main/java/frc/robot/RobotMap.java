@@ -37,6 +37,7 @@ public static final int OI_BUTTON_X = 3;
 public static final int OI_BUTTON_Y = 4;
 public static final int OI_BUTTON_A = 1;
 public static final int OI_BUTTON_B = 2;
+public static final int OI_BUTTON_7 = 7;
 
 // Joystick Constants - Logitech Extreme Style
 public static final int EX_X = 0;

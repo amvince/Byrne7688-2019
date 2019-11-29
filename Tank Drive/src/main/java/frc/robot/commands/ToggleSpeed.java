@@ -7,31 +7,22 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TimedReverse extends Command {
-  private double d_time = 0.0;
-  private Timer m_time;
-
-  public TimedReverse() {
+public class ToggleSpeed extends Command {
+  public ToggleSpeed() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.drivetrain);
+    // eg. requires(chassis);
   }
 
-  public TimedReverse(double time) {
-    requires(Robot.drivetrain);
-    this.d_time = time;
-  }
- 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    m_time = new Timer();
-    m_time.reset();
-    m_time.start();
-    Robot.drivetrain.tankDrive(-0.5, -0.5);
+    Robot.drivetrain.t_speed = (Robot.drivetrain.t_speed==1) ? 0.6 : 1.0;
+    Robot.drivetrain.d_speed = (Robot.drivetrain.d_speed==1) ? 0.6 : 1.0;
+    System.out.println("Drive Speed: "+Robot.drivetrain.t_speed);
+    System.out.println("Turning Speed: "+Robot.drivetrain.d_speed);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -42,20 +33,17 @@ public class TimedReverse extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    // System.out.println("Reversing: " + m_time.get());
-    return m_time.hasPeriodPassed(d_time);
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -30,6 +31,7 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lifter m_lifter = new Lifter();
+  public static ADXRS450_Gyro m_gyro = new ADXRS450_Gyro();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 

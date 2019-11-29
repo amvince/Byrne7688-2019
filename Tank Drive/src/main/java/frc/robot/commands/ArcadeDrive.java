@@ -6,7 +6,7 @@ import frc.robot.RobotMap;
 
 public class ArcadeDrive extends Command {
 
-    private static final double m_speed = -RobotMap.MOTOR_SPEED;
+    private static double m_speed = -RobotMap.MOTOR_SPEED;
     private static final double m_turn = RobotMap.TURN_SPEED;
 
     public ArcadeDrive() {

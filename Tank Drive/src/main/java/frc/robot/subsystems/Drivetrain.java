@@ -7,20 +7,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArcadeDrive;
-import frc.robot.commands.TankDrive;
+
 
 public class Drivetrain extends Subsystem {
     
     private static WPI_VictorSPX left_f, left_r, right_f, right_r;
     private static DifferentialDrive m_drive;
     private static SpeedControllerGroup m_left, m_right;
-
+    public double t_speed = RobotMap.MOTOR_SPEED;
+    public double d_speed = 1.0;
     public Drivetrain() {
         left_f = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_FRONT);
         left_r = new WPI_VictorSPX(RobotMap.DRIVETRAIN_LEFT_REAR);
         right_f = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_FRONT);
         right_r = new WPI_VictorSPX(RobotMap.DRIVETRAIN_RIGHT_REAR);
-
+        
         m_left = new SpeedControllerGroup(left_f, left_r);
         m_right = new SpeedControllerGroup(right_f, right_r);
         m_drive = new DifferentialDrive(m_left, m_right);
@@ -31,7 +32,7 @@ public class Drivetrain extends Subsystem {
     }
 
     public void arcadeDrive(double speed, double direction) {
-        m_drive.arcadeDrive(speed, direction);
+        m_drive.arcadeDrive(speed * t_speed, direction * d_speed);
     }
     public void stop() {
         m_drive.tankDrive(0,0);
