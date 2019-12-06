@@ -14,9 +14,10 @@ import frc.robot.Robot;
 public class Turn extends Command {
 
   double lastPosition;
-  double P=0.004, I=0.008, D = 0; // Try P=.5K, I=.5K/Time of Oscillation
+  double P=0.02, I=0.006, D = 0.0; // Try P=.5K, I=.5K/Time of Oscillation
   double integral, targetAngle, previous_error, error = 0;
   double rcw, gyroAngle;
+  int counter=0;
 
   public Turn() {
     // Use requires() here to declare subsystem dependencies
@@ -53,7 +54,8 @@ public class Turn extends Command {
     this.integral += (this.error*.02);
     double derivative = (this.error - this.previous_error) / 0.02;
     this.rcw = P*error + I * this.integral + D*derivative;
-    System.out.println("Pointing: "+ gyroAngle + " Correction: "+this.error+" Integral: "+this.integral);
+    System.out.println("Pointing: "+ gyroAngle + " Correction: "+this.error);
+    System.out.println(" Integral: "+this.integral + " Derivative: "+derivative);
     
     System.out.println("RCW: "+this.rcw);
     /* 
@@ -61,7 +63,10 @@ public class Turn extends Command {
     } else if (error < -1) { speedFactor = -Math.min(1.0, -error/5); }
     else {speedFactor = 0.0; }
     */ 
+    
     Timer.delay(0.004);
+    if (this.rcw > 0.6) this.rcw = 0.6;
+    if (this.rcw < -0.6) this.rcw = -.6;
     this.previous_error = this.error;
     Robot.drivetrain.arcadeDrive(0,this.rcw);
   }
@@ -69,7 +74,10 @@ public class Turn extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return ((this.error-this.previous_error)==0 && this.gyroAngle==this.targetAngle);
+    //if (Math.abs(this.error) < 0.4) {counter++} 
+    //else counter=0;
+    counter += (Math.abs(this.error)<5) ? 1 : -counter;
+    return (counter>20);
   }
 
   // Called once after isFinished returns true
