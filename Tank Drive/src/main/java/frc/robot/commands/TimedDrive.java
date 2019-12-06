@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class TimedDrive extends Command {
-  private double d_time = 0.0;
+  private double d_time = 1;
   private Timer m_time;
 
   public TimedDrive() {
@@ -30,7 +30,7 @@ public class TimedDrive extends Command {
   protected void initialize() {
     m_time = new Timer();
     m_time.start();
-    Robot.drivetrain.tankDrive(0.5,0.5);
+    Robot.drivetrain.tankDrive(0.4,0.4);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,7 +41,7 @@ public class TimedDrive extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    // System.out.println("Forward: "+m_time.get());
+    System.out.println("Forward: "+m_time.get());
     return m_time.hasPeriodPassed(d_time);
   }
 
