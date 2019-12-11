@@ -59,8 +59,8 @@ public class Turn extends Command {
     
     System.out.println("RCW: "+this.rcw);
     /* 
-    if (error > 1) { speedFactor = Math.min(1.0, error/5);
-    } else if (error < -1) { speedFactor = -Math.min(1.0, -error/5); }
+    if (this.rcw > .6) { this.rcw = Math.min(.6, this.rcw/2);
+    } else if (this.rcw < -1) { this.rcw = -Math.min(.6, this.rcw/2); }
     else {speedFactor = 0.0; }
     */ 
     
