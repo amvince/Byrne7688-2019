@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 // import frc.robot.subsystems.Lifter;
+import frc.robot.subsystems.Limelight;
 
 
 
@@ -32,7 +33,8 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static Drivetrain drivetrain = new Drivetrain();
   // public static Lifter m_lifter = new Lifter();
-  
+  public static Limelight limelight = new Limelight();
+
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 

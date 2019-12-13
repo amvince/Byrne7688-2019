@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -57,5 +61,15 @@ public static final int EX_HAT_Y = 6;
   public static final int PN_SOLENOID_LD = 2; // Lift Solenoid Down
   public static final int PN_SOLENOID_LU = 3; // Lift Solenoid Up
 
-  
+  // Limelight Numbers
+  public static final NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+        
+  public static final NetworkTableEntry tx = table.getEntry("tx");
+  public static final NetworkTableEntry ty = table.getEntry("ty");
+  public static final NetworkTableEntry ta = table.getEntry("ta");
+  public static final NetworkTableEntry tv = table.getEntry("tv");
+
+  public static final NetworkTableEntry ledMode = table.getEntry("ledMode");
+  public static final NetworkTableEntry camMode = table.getEntry("camMode");
+  public static final NetworkTableEntry pipeline = table.getEntry("pipeline");
 }
